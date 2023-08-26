@@ -392,22 +392,21 @@ export class AppComponent {
 
 ![lifecycle](https://codecraft.tv/courses/angular/components/lifecycle-hooks/images/lifecycle-hooks.png)
 
-- **_ngOnInit()_**
-
-Initialize the directive or component after Angular first
-displays the data-bound properties and sets the directive or
-component input properties.
-
-- **_ngOnInit()_**
-
-Initialize the directive or component after Angular first
-displays the data-bound properties and sets the directive or
-component input properties.
-
-- **_ngAfterViewInit()_**
-
-Respond after Angular initializes the component's views and
-child views, or the view that contains the directive
+- **_ngOnChanges:_** This hook is called when Angular sets or resets data-bound input properties. It receives a SimpleChanges object of current and previous property values. It is called before ngOnInit and whenever one or more data-bound input properties change. You can use this hook to respond to changes in input properties or to initialize them.
+  
+- **_ngOnInit:_** This hook is called once after the first ngOnChanges. It is a good place to initialize the component or directive, fetch data from a service, or set up subscriptions.
+  
+- **_ngDoCheck:_** This hook is called every time Angular runs change detection. It is a custom change detection hook that you can use to detect and act upon changes that Angular can’t or won’t detect on its own. For example, you can use this hook to implement a custom comparison for objects that are not immutable.
+  
+- **_ngAfterContentInit:_** This hook is called once after Angular projects external content into the component’s view, or into the view that a directive is in. It is a good place to query for projected content using @ContentChild or @ContentChildren.
+  
+- **_ngAfterContentChecked:_** This hook is called after every Angular check of the projected content. It is similar to ngDoCheck, but for projected content.
+  
+- **_ngAfterViewInit:_** This hook is called once after Angular initializes the component’s view, or the view that contains the directive. It is a good place to query for view elements using @ViewChild or @ViewChildren.
+  
+- **_ngAfterViewChecked:_** This hook is called after every Angular check of the component’s view, or the view that contains the directive. It is similar to ngDoCheck, but for view elements.
+  
+- **_ngOnDestroy:_** This hook is called once before Angular destroys the component or directive. It is a good place to perform any cleanup logic, such as unsubscribing from observables, detaching event handlers, or freeing resources.
 
 ## Data bindnig
 
